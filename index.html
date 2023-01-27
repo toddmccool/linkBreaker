@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p>Enter song titles separated by newlines:</p>
+    <textarea id="textInput"></textarea>
+    <br />
+    <button onclick="convertText()">Convert</button>
+    <p id="output"></p>
+
+    <script>
+      function convertText() {
+        var input = document.getElementById("textInput").value;
+        // remove any HTML formatting
+        input = input.replace(/<[^>]*>/g, "");
+
+        // Split the input string into an array of song titles
+        var songTitleArray = input.split("\n");
+
+        // Add quotes to the beginning and end of eachsong title
+        songTitleArray = songTitleArray.map(function (title) {
+          return '"' + title + '"';
+        });
+
+        // Join the array ofsong titles into a string separated by commas
+        var songTitleString = songTitleArray.join(", ");
+
+        document.getElementById("output").innerHTML = songTitleString;
+      }
+    </script>
+  </body>
+</html>
